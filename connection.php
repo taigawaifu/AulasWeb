@@ -42,9 +42,9 @@ session_start();
             if(empty($con)){
                 die("Conexao falhou" . mysqli_connect_error());
             }
-            $sql = "INSERT INTO usuario (nome, senha , saldo, cpf) VALUES ('$nome','$senha','$cpf')";
+            $result = $con->query("INSERT INTO usuario (nome, senha , saldo, cpf) VALUES ('$nome','$senha','$cpf')");
 
-            if($con->query($sql) == TRUE && $nome !=null && $senha !=null){
+            if($con->query($con) == TRUE && $nome !=null && $senha !=null){
                 $aux_query = $result->fetch_assoc();
                 $_SESSION['id'] = $aux_query['idnome'];
                 $_SESSION['nome'] = $aux_query['nome'];
